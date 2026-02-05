@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tonya Health Care - 世界に広がる高齢者ケアセンター</title>
+    <link rel="icon" href="cardiogram.png" type="image/png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #2c5f7c 0%, #4a8fb0 100%);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        font-size: 1rem;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.8;
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(rgba(44, 95, 124, 0.7), rgba(74, 143, 176, 0.7)),
+          url("image4.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 180px 2rem 120px;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s 0.2s backwards;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: #ff6b6b;
+        color: white;
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        animation: fadeInUp 1s 0.4s backwards;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+      }
+
+      /* About Section */
+      .about {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #2c5f7c;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: #ff6b6b;
+        border-radius: 2px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 3rem;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .about-card {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .about-card h3 {
+        color: #2c5f7c;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      /* Image Sections */
+      .image-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        margin-top: 4rem;
+        background: white;
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .image-section.reverse {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .image-section.reverse .image-content {
+        order: 2;
+      }
+
+      .image-section.reverse .image-text {
+        order: 1;
+      }
+
+      .image-section img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-text h3 {
+        color: #2c5f7c;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .image-text p {
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .image-section {
+          grid-template-columns: 1fr;
+        }
+
+        .image-section.reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .image-section.reverse .image-content,
+        .image-section.reverse .image-text {
+          order: unset;
+        }
+
+        .image-section img {
+          height: 300px;
+        }
+      }
+
+      /* Services Section */
+      .services {
+        background: #f8f9fa;
+        padding: 5rem 2rem;
+      }
+
+      .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        color: #2c5f7c;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      /* Facilities Section */
+      .facilities {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+
+      .facilities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .facility-item {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .facility-item:hover {
+        transform: scale(1.05);
+      }
+
+      .facility-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Events Section */
+      .events {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 5rem 2rem;
+      }
+
+      .events-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .events .section-title {
+        color: white;
+      }
+
+      .events .section-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .event-card {
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 2rem;
+        border-radius: 15px;
+        transition: transform 0.3s;
+      }
+
+      .event-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .event-card h3 {
+        color: #f5576c;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .testimonial-card {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        border-left: 4px solid #4a8fb0;
+        position: relative;
+      }
+
+      .testimonial-quote {
+        font-size: 3rem;
+        color: #4a8fb0;
+        opacity: 0.3;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+      }
+
+      .testimonial-text {
+        margin-bottom: 1rem;
+        padding-top: 1rem;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        color: #2c5f7c;
+        text-align: right;
+      }
+
+      /* Global Presence Section */
+      .global {
+        background: linear-gradient(135deg, #2c5f7c 0%, #4a8fb0 100%);
+        color: white;
+        padding: 5rem 2rem;
+      }
+
+      .global-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .global .section-title {
+        color: white;
+      }
+
+      .global .section-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .contact-info {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+      }
+
+      .contact-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item h3 {
+        color: #2c5f7c;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        margin-bottom: 0.5rem;
+        color: #2c5f7c;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 0.8rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #4a8fb0;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-button {
+        background: #4a8fb0;
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .submit-button:hover {
+        background: #2c5f7c;
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #4a8fb0;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-section a:hover {
+        color: #4a8fb0;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        color: #888;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">🏥 Tonya Health Care</div>
+        <ul class="nav-links">
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#facilities">施設</a></li>
+          <li><a href="#events">イベント</a></li>
+          <li><a href="#testimonials">お客様の声</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>笑顔あふれる毎日を、心から支えます</h1>
+      <p>世界中のシニアの方々に最高のケアと充実した生活を提供します</p>
+      <a href="#contact" class="cta-button">今すぐお問い合わせ</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <h2 class="section-title">Tonya Health Careについて</h2>
+      <p class="section-subtitle">
+        世界に広がる高齢者ケアのリーディングカンパニー
+      </p>
+      <div class="about-content">
+        <div class="about-card">
+          <div class="about-icon">🌍</div>
+          <h3>グローバルな展開</h3>
+          <p>
+            世界50カ国以上で、高品質な高齢者ケアサービスを提供しています。各地域の文化や習慣を尊重しながら、統一された高水準のケアを実現しています。
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">❤️</div>
+          <h3>心のこもったケア</h3>
+          <p>
+            私たちは単なる介護サービスではありません。一人ひとりの個性を大切にし、尊厳を持って接することを最優先としています。家族のような温かさで、皆様をお迎えします。
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🏆</div>
+          <h3>30年以上の実績</h3>
+          <p>
+            1995年の創業以来、30年以上にわたり高齢者ケアの分野でパイオニアとして歩んできました。常に革新を続け、業界をリードし続けています。
+          </p>
+        </div>
+      </div>
+
+      <!-- Image Section: Compassionate Care -->
+      <div class="image-section">
+        <div class="image-content">
+          <img src="image1.jpg" alt="介護スタッフと利用者様の温かい交流" />
+        </div>
+        <div class="image-text">
+          <h3>一人ひとりに寄り添うケア</h3>
+          <p>
+            私たちのケアスタッフは、医療や介護の専門知識だけでなく、人としての温かさと思いやりを持って接しています。
+          </p>
+          <p>
+            利用者様の生活歴や趣味、価値観を深く理解し、その方らしい生活を送っていただけるよう、きめ細やかなサポートを提供します。
+          </p>
+          <p>24時間365日、いつでも安心して過ごせる環境づくりに努めています。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="services-container">
+        <h2 class="section-title">充実のサービス</h2>
+        <p class="section-subtitle">あなたの健康と幸せを全面的にサポート</p>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🏥</div>
+            <h3>24時間医療サポート</h3>
+            <p>
+              経験豊富な医師と看護師が24時間体制で常駐。緊急時にも迅速に対応し、安心して過ごせる環境を提供します。定期健康診断も実施しています。
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🍱</div>
+            <h3>栄養管理と食事サービス</h3>
+            <p>
+              専属の栄養士が一人ひとりの健康状態に合わせた献立を作成。美味しく健康的な食事を毎日提供します。特別食や療養食にも対応しています。
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💪</div>
+            <h3>リハビリテーション</h3>
+            <p>
+              理学療法士と作業療法士による専門的なリハビリプログラム。機能回復と維持を目指し、個別のニーズに応じたケアを提供します。
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🧘</div>
+            <h3>メンタルヘルスケア</h3>
+            <p>
+              心理カウンセラーによる定期的なカウンセリングとメンタルサポート。孤独感や不安を解消し、心の健康を守ります。
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🚐</div>
+            <h3>送迎サービス</h3>
+            <p>
+              通院や外出の際の送迎サービスを提供。専門ドライバーが安全に目的地までお送りします。バリアフリー車両完備。
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🛁</div>
+            <h3>日常生活サポート</h3>
+            <p>
+              入浴、着替え、排泄など、日常生活全般のサポート。プライバシーと尊厳を守りながら、必要な介助を丁寧に行います。
+            </p>
+          </div>
+        </div>
+
+        <!-- Image Section: Medical Care -->
+        <div
+          class="image-section reverse"
+          style="background: transparent; box-shadow: none; padding: 3rem 0"
+        >
+          <div class="image-content">
+            <img src="image3.jpg" alt="医師と利用者様の診察風景" />
+          </div>
+          <div class="image-text">
+            <h3>専門医療チームによる安心のサポート</h3>
+            <p>
+              経験豊富な医師、看護師、理学療法士、作業療法士など、多職種の専門家がチームを組んで皆様の健康をサポートします。
+            </p>
+            <p>
+              定期的な健康診断や予防医療はもちろん、慢性疾患の管理、急性期の対応まで、総合的な医療ケアを提供しています。
+            </p>
+            <p>
+              地域の総合病院とも連携し、必要に応じて専門的な治療にスムーズに移行できる体制を整えています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities" id="facilities">
+      <h2 class="section-title">充実した施設</h2>
+      <p class="section-subtitle">快適で安全な生活空間</p>
+      <div class="facilities-grid">
+        <div class="facility-item">
+          <h3>🛏️ プライベートルーム</h3>
+          <p>広々とした個室で快適なプライベート空間を確保</p>
+        </div>
+        <div class="facility-item">
+          <h3>🏊 温泉・スパ施設</h3>
+          <p>天然温泉とリラクゼーション設備完備</p>
+        </div>
+        <div class="facility-item">
+          <h3>📚 図書室</h3>
+          <p>豊富な蔵書と静かな読書スペース</p>
+        </div>
+        <div class="facility-item">
+          <h3>🎨 アート&クラフトルーム</h3>
+          <p>創造性を育む創作活動の場</p>
+        </div>
+        <div class="facility-item">
+          <h3>🎵 音楽室</h3>
+          <p>楽器演奏や音楽鑑賞を楽しめる空間</p>
+        </div>
+        <div class="facility-item">
+          <h3>🌳 庭園</h3>
+          <p>四季折々の自然を楽しめる美しい日本庭園</p>
+        </div>
+        <div class="facility-item">
+          <h3>🎭 多目的ホール</h3>
+          <p>イベントや集会に使える広々としたホール</p>
+        </div>
+        <div class="facility-item">
+          <h3>💻 コンピュータールーム</h3>
+          <p>デジタル活動をサポートするIT設備</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+      <div class="events-container">
+        <h2 class="section-title">イベント＆アクティビティ</h2>
+        <p class="section-subtitle">毎日を楽しく、充実させる多彩なプログラム</p>
+        <div class="events-grid">
+          <div class="event-card">
+            <h3>🎨 アートセラピー</h3>
+            <p>
+              絵画、陶芸、書道など、様々な芸術活動を通じて創造性を発揮。専門講師による指導で、初心者の方も安心して参加できます。
+            </p>
+            <p><strong>開催：毎週火曜日・木曜日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🎵 音楽コンサート</h3>
+            <p>
+              プロの音楽家によるコンサートや、入居者様による発表会を定期的に開催。懐かしい昭和の歌謡曲から、クラシックまで幅広いジャンルをお楽しみいただけます。
+            </p>
+            <p><strong>開催：毎月第2土曜日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🧘 ヨガ＆太極拳</h3>
+            <p>
+              身体に優しいエクササイズで健康維持。専門インストラクターの指導のもと、無理なく楽しく運動できます。
+            </p>
+            <p><strong>開催：毎週月曜日・水曜日・金曜日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🍵 茶道体験</h3>
+            <p>
+              伝統文化に触れる茶道の時間。心を落ち着かせ、季節のお菓子とともに至福のひとときを。
+            </p>
+            <p><strong>開催：毎週水曜日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🌸 季節のイベント</h3>
+            <p>
+              お花見、夏祭り、紅葉狩り、クリスマスパーティーなど、季節ごとの特別イベントを開催。家族の方もご招待します。
+            </p>
+            <p><strong>開催：各季節ごと</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🎓 生涯学習講座</h3>
+            <p>
+              語学、歴史、料理、IT講座など、興味に応じた学びの場を提供。脳の活性化にも効果的です。
+            </p>
+            <p><strong>開催：毎週木曜日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🎮 ゲーム＆レクリエーション</h3>
+            <p>
+              囲碁、将棋、マージャン、カラオケなど、楽しみながら仲間と交流できる活動が盛りだくさん。
+            </p>
+            <p><strong>開催：毎日</strong></p>
+          </div>
+          <div class="event-card">
+            <h3>🚌 外出プログラム</h3>
+            <p>
+              美術館、博物館、ショッピングモールへの定期的な外出。気分転換と社会とのつながりを大切にします。
+            </p>
+            <p><strong>開催：毎月第3土曜日</strong></p>
+          </div>
+        </div>
+
+        <!-- Image Section: Active Lifestyle -->
+        <div
+          class="image-section"
+          style="background: rgba(255, 255, 255, 0.95); margin-top: 4rem"
+        >
+          <div class="image-content">
+            <img src="image2.jpg" alt="屋外で運動を楽しむシニアの方々" />
+          </div>
+          <div class="image-text">
+            <h3>アクティブで充実した毎日</h3>
+            <p>
+              健康寿命を延ばすため、楽しみながら体を動かせる多彩なプログラムをご用意しています。専門インストラクターの指導のもと、無理なく継続できる運動習慣を身につけられます。
+            </p>
+            <p>
+              屋内外の設備を活用し、四季を通じて様々なアクティビティをお楽しみいただけます。仲間と一緒に笑顔で過ごす時間が、心身の健康につながります。
+            </p>
+            <p>
+              個々の体力や健康状態に合わせたプログラムをご提案しますので、運動が苦手な方でも安心してご参加いただけます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <h2 class="section-title">お客様の声</h2>
+      <p class="section-subtitle">ご利用いただいている皆様からの温かいお言葉</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            こちらに入居してから、毎日が本当に楽しくなりました。スタッフの皆さんは家族のように温かく、様々なイベントを通じて新しい友人もたくさんできました。85歳になって人生で一番充実した日々を送っています。
+          </p>
+          <p class="testimonial-author">— 田中 花子様（85歳）</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            母がこちらでお世話になっています。最初は施設に入ることに抵抗がありましたが、今では「ここに来て本当に良かった」と笑顔で言ってくれます。医療体制も万全で、家族として安心してお任せできます。
+          </p>
+          <p class="testimonial-author">— 佐藤 太郎様（ご家族）</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            リハビリのおかげで、杖なしで歩けるようになりました。理学療法士の先生方が親身になってサポートしてくださり、諦めかけていた自立した生活を取り戻せました。感謝の気持ちでいっぱいです。
+          </p>
+          <p class="testimonial-author">— 鈴木 一郎様（78歳）</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            食事が本当に美味しくて、毎回楽しみにしています。栄養士さんが私の糖尿病を考慮した献立を作ってくださり、健康的で美味しい食事を楽しめています。家で料理していた頃より健康になりました。
+          </p>
+          <p class="testimonial-author">— 山田 良子様（82歳）</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            毎週のアート教室が生きがいになっています。先生の指導も丁寧で、70歳を過ぎてから始めた絵画ですが、今では個展を開くまでになりました。新しい挑戦を応援してくれる環境に感謝しています。
+          </p>
+          <p class="testimonial-author">— 伊藤 美智子様（74歳）</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            世界中に展開されているので、海外に住む息子の近くの施設に転居することができました。同じTonyaグループなので、サービスの質も変わらず安心です。このようなグローバルなネットワークは本当に助かります。
+          </p>
+          <p class="testimonial-author">— 高橋 正夫様（80歳）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Presence Section -->
+    <section class="global" id="global">
+      <div class="global-container">
+        <h2 class="section-title">世界に広がるネットワーク</h2>
+        <p class="section-subtitle">グローバルスタンダードの高齢者ケア</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">展開国数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">施設数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50,000+</div>
+            <div class="stat-label">ご利用者様</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15,000+</div>
+            <div class="stat-label">スタッフ数</div>
+          </div>
+        </div>
+        <div style="margin-top: 3rem; text-align: center; line-height: 2">
+          <p style="font-size: 1.1rem">
+            日本、アメリカ、カナダ、イギリス、フランス、ドイツ、イタリア、スペイン、オーストラリア、ニュージーランド、<br />
+            シンガポール、香港、韓国、台湾、タイ、マレーシア、インドネシア、フィリピン、ベトナム、インド、<br />
+            アラブ首長国連邦、サウジアラビア、南アフリカ、ブラジル、アルゼンチン、チリ、メキシコなど<br />
+            世界中でサービスを展開しています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="section-subtitle">お気軽にご相談ください</p>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <h3>📞 お電話でのお問い合わせ</h3>
+            <p>フリーダイヤル: +81-48928-75830</p>
+            <p>受付時間: 9:00〜18:00（年中無休）</p>
+          </div>
+          <div class="contact-item">
+            <h3>📧 メールでのお問い合わせ</h3>
+            <p>info@tonya-healthcare.com</p>
+            <p>24時間受付（返信は営業時間内）</p>
+          </div>
+          <div class="contact-item">
+            <h3>🏢 本社所在地</h3>
+            <p>〒100-0001</p>
+            <p>東京都千代田区千代田1-1-1</p>
+            <p>Tonyaヘルスケアビル</p>
+          </div>
+          <div class="contact-item">
+            <h3>🕐 見学会のご案内</h3>
+            <p>施設見学は随時受付中です。</p>
+            <p>事前にお電話でご予約ください。</p>
+            <p>体験入居プログラムもございます。</p>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">お名前 *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="subject">お問い合わせ件名 *</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div class="form-group">
+            <label for="message">お問い合わせ内容 *</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">送信する</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Tonya Health Care</h3>
+          <p>世界中のシニアの方々に、<br />最高のケアと充実した生活を。</p>
+          <p style="margin-top: 1rem">
+            © 2026 Tonya Health Care<br />All Rights Reserved.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>サービス</h3>
+          <ul>
+            <li><a href="#services">医療サポート</a></li>
+            <li><a href="#services">栄養管理</a></li>
+            <li><a href="#services">リハビリテーション</a></li>
+            <li><a href="#services">メンタルケア</a></li>
+            <li><a href="#services">送迎サービス</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>会社情報</h3>
+          <ul>
+            <li><a href="#about">企業理念</a></li>
+            <li><a href="#global">世界展開</a></li>
+            <li><a href="#">採用情報</a></li>
+            <li><a href="#">ニュース</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>お問い合わせ</h3>
+          <ul>
+            <li>📞 +81-48928-75830</li>
+            <li>📧 info@tonya-healthcare.com</li>
+            <li>🏢 東京都千代田区千代田1-1-1</li>
+            <li><a href="#contact">お問い合わせフォーム</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          Tonya Health Care -
+          世界50カ国以上で展開する、グローバルヘルスケアグループ
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Form submission handler
+      document
+        .querySelector(".contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert(
+            "お問い合わせありがとうございます。担当者より折り返しご連絡いたします。",
+          );
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
